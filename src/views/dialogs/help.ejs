@@ -1,0 +1,150 @@
+<div id="help-dialog" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="min-width: 100%; height: 100%; margin: 0;">
+        <div class="modal-content" style="height: auto;">
+            <div class="modal-header">
+                <h5 class="modal-title mr-auto">帮助（提供完整文档 <a class="external" href="https://github.com/zadam/trilium/wiki">这里</a>)</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="overflow: auto; height: calc(100vh - 70px);">
+                <div class="card-columns help-cards">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">笔记导航</h5>
+
+                            <p class="card-text">
+                                <ul>
+                                    <li><kbd>UP</kbd>, <kbd>DOWN</kbd> - 在笔记列表中上移/下移</li>
+                                    <li><kbd>LEFT</kbd>, <kbd>RIGHT</kbd> - 折叠/展开节点</li>
+                                    <li><kbd data-command="backInNoteHistory"></kbd>, <kbd data-command="forwardInNoteHistory"></kbd> - 浏览历史记录</li>
+                                    <li><kbd data-command="jumpToNote"></kbd> - show <a class="external" href="https://github.com/zadam/trilium/wiki/Note-navigation#jump-to-note">“跳转到”对话框</a></li>
+                                    <li><kbd data-command="scrollToActiveNote"></kbd> - 滚动至活动笔记</li>
+                                    <li><kbd data-command="activateParentNote"></kbd> - 跳转到上一级笔记</li>
+                                    <li><kbd data-command="collapseTree"></kbd> - 折叠整个导航树</li>
+                                    <li><kbd data-command="collapseSubtree"></kbd> - 折叠子树</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">选项卡快捷方式</h5>
+
+                            <p class="card-text">
+                            <ul>
+                                <li><kbd>CTRL+click</kbd>（或鼠标中键单击）在便笺链接上打开新选项卡中的便笺</li>
+                            </ul>
+
+                            仅在桌面 (electron 构建)：
+                            <ul>
+                                <li><kbd data-command="openNewTab"></kbd> 打开空选项卡</li>
+                                <li><kbd data-command="closeActiveTab"></kbd> 关闭活动选项卡</li>
+                                <li><kbd data-command="activateNextTab"></kbd> 激活下一个选项卡</li>
+                                <li><kbd data-command="activatePreviousTab"></kbd> 激活上一个选项卡</li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">创建笔记</h5>
+
+                            <p class="card-text">
+                                <ul>
+                                    <li><kbd data-command="createNoteAfter"></kbd> - 在当前笔记之后创建新笔记</li>
+                                    <li><kbd data-command="createNoteInto"></kbd> - 为当前笔记创建新的子笔记</li>
+                                    <li><kbd data-command="editBranchPrefix"></kbd> - edit <a class="external" href="https://github.com/zadam/trilium/wiki/Tree concepts#prefix">前缀</a> 克隆活动笔记</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">移动 / 克隆笔记</h5>
+
+                            <p class="card-text">
+                                <ul>
+                                    <li><kbd data-command="moveNoteUp"></kbd>, <kbd data-command="moveNoteDown"></kbd> - 在笔记列表中上移/下移便笺</li>
+                                    <li><kbd data-command="moveNoteUpInHierarchy"></kbd>, <kbd data-command="moveNoteDownInHierarchy"></kbd> - 在层次结构中向上移动笔记</li>
+                                    <li><kbd data-command="addNoteAboveToSelection"></kbd>, <kbd data-command="addNoteBelowToSelection"></kbd> - 向上 / 下多选笔记</li>
+                                    <li><kbd data-command="selectAllNotesInParent"></kbd> - 选择当前级别中的所有笔记</li>
+                                    <li><kbd>Shift+click</kbd> - 选择笔记</li>
+                                    <li><kbd data-command="copyNotesToClipboard"></kbd> - 将当前笔记（或当前选定内容）复制到剪贴板（用于 <a class="external" href="https://github.com/zadam/trilium/wiki/Cloning notes">克隆</a>）</li>
+                                    <li><kbd data-command="cutNotesToClipboard"></kbd> - 将当前（或当前选择）笔记剪切到剪贴板（用于移动笔记）</li>
+                                    <li><kbd data-command="pasteNotesFromClipboard"></kbd> - 将便笺作为子便笺粘贴到活动便笺（剪切 / 复制到剪贴板决定着，当前笔记是移动还是克隆）</li>
+                                    <li><kbd data-command="deleteNotes"></kbd> - 删除笔记 / 子树</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">编辑笔记</h5>
+
+                            <p class="card-text">
+                                <ul>
+                                    <li><kbd data-command="editNoteTitle"></kbd> 点击导航，切换到笔记标题。在笔记标题输入。
+                                        <kbd data-command="scrollToActiveNote"></kbd> 从编辑器切换导航窗格。</li>
+                                    <li><kbd>Ctrl+K</kbd> - 创建 / 编辑外部链接</li>
+                                    <li><kbd data-command="addLinkToText"></kbd> - 创建内部链接</li>
+                                    <li><kbd data-command="insertDateTimeToText"></kbd> - 在光标位置插入当前日期和时间</li>
+                                    <li><kbd data-command="scrollToActiveNote"></kbd> - 跳转到导航树并滚动到活动笔记</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="external" href="https://github.com/zadam/trilium/wiki/Text-notes#autoformat">Markdown - 式的自动格式化</a></h5>
+
+                            <p class="card-text">
+                                <ul>
+                                    <li><kbd>#</kbd>, <kbd>##</kbd>, <kbd>###</kbd> 等加空格后，后面是标题</li>
+                                    <li><kbd>*</kbd> or <kbd>-</kbd> 加空格后，后跟项目列表</li>
+                                    <li><kbd>1.</kbd> or <kbd>1)</kbd> 加空格后，后跟编号列表</li>
+                                    <li>start a line with <kbd>&gt;</kbd> 加空格后，后跟块引用</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">故障</h5>
+
+                            <p class="card-text">
+                                <ul>
+                                    <li><kbd data-command="reloadFrontendApp"></kbd> - 应用重新加载</li>
+                                    <li><kbd data-command="openDevTools"></kbd> - 显示开发工具</li>
+                                    <li><kbd data-command="showSQLConsole"></kbd> - 显示SQL控制台</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">其他</h5>
+
+                            <p class="card-text">
+                                <ul>
+                                    <li><kbd data-command="toggleZenMode"></kbd> - 专注模式-只显示笔记编辑器，其他一切都隐藏起来</li>
+                                    <li><kbd data-command="searchNotes"></kbd> - 在导航树窗格中调出（隐藏）检索功能</li>
+                                    <li><kbd data-command="findInText"></kbd> - 页内搜索</li>
+                                    <li><kbd data-command="showAttributes"></kbd> - 显示笔记属性对话框</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

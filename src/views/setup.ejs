@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>安装程序</title>
+
+    <style>
+        .lds-ring {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+        .lds-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            margin: 8px;
+            border: 6px solid black;
+            border-radius: 50%;
+            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: black transparent transparent transparent;
+        }
+        .lds-ring div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+        .lds-ring div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+        .lds-ring div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+        @keyframes lds-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<noscript>图灵笔记需要启用JavaScript。</noscript>
+<div class="container">
+    <div id="setup-dialog" class="col-md-12 col-lg-8 col-xl-6 mx-auto" style="padding-top: 25px; font-size: larger; display: none;">
+        <h1>Trilium Notes setup</h1>
+
+        <div class="alert alert-warning" id="alert" style="display: none;">
+        </div>
+
+        <div id="setup-type" data-bind="visible: step() == 'setup-type'" style="margin-top: 20px;">
+            <div class="radio" style="margin-bottom: 15px;">
+                <label><input type="radio" name="setup-type" value="new-document" data-bind="checked: setupType">
+                    我是一个新用户，我想为我的笔记创建新的图灵文档</label>
+            </div>
+            <div class="radio" style="margin-bottom: 15px;">
+                <label><input type="radio" name="setup-type" value="sync-from-desktop" data-bind="checked: setupType">
+                    我已经有桌面应用，我想设置与之同步</label>
+            </div>
+            <div class="radio" style="margin-bottom: 15px;">
+                <label><input type="radio" name="setup-type" value="sync-from-server" data-bind="checked: setupType">
+                    我已经有了服务器实例，我想设置与之同步</label>
+            </div>
+
+            <button type="button" data-bind="disable: !setupTypeSelected(), click: selectSetupType" class="btn btn-primary">下一步</button>
+        </div>
+
+        <div data-bind="visible: step() == 'new-document'">
+            <h2>新配置</h2>
+
+            <p>你的配置快完成了。最后一件事是选择用于登录应用程序的用户名和密码。
+                此密码还用于生成加密受保护笔记的加密密钥。</p>
+
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" data-bind="value: username" placeholder="Choose alphanumeric username">
+            </div>
+            <div class="form-group">
+                <label for="password1">密码</label>
+                <input type="password" class="form-control" data-bind="value: password1" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="password2">重复密码</label>
+                <input type="password" class="form-control" data-bind="value: password2" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="password2">主题</label>
+
+                <div style="display: flex; justify-content: space-around;">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="theme" id="theme-white" value="white" data-bind="checked: theme" checked>
+                        <label class="form-check-label" for="theme-white">白</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="theme" id="theme-dark" value="dark" data-bind="checked: theme">
+                        <label class="form-check-label" for="theme-dark">暗</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="theme" id="theme-black" value="black" data-bind="checked: theme">
+                        <label class="form-check-label" for="theme-black">黑</label>
+                    </div>
+                </div>
+
+                <p style="font-size: smaller;margin-top: 10px;"><em>以后可以在“选项”->“外观”中更改主题。</em></p>
+            </div>
+
+            <button type="button" data-bind="click: back" class="btn btn-secondary">返回</button>
+
+            &nbsp;
+
+            <button type="button" data-bind="click: finish" class="btn btn-primary">完成配置</button>
+        </div>
+
+        <div data-bind="visible: step() == 'new-document-in-progress'">
+            <h2>正在初始化文档</h2>
+
+            <div style="display: flex; justify-content: flex-start; margin-top: 20px;">
+                <div class="lds-ring" style="margin-right: 20px;">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div style="line-height: 60px;">
+                    <p>您将很快重定向到应用程序。</p>
+                </div>
+            </div>
+        </div>
+
+        <div data-bind="visible: step() == 'sync-from-desktop'">
+            <h2>从桌面同步</h2>
+
+            <p>此安装程序需要从桌面实例启动：</p>
+
+            <ol>
+                <li>请打开图灵笔记的桌面实例</li>
+                <li>点击右上角的选项按钮</li>
+                <li>单击“同步”选项卡</li>
+                <li>将服务器实例地址配置为：<span id="current-host"></span> 然后单击“保存”。</li>
+                <li>点击“测试同步”按钮</li>
+                <li>完成所有操作后，单击<a href="/">这里</a></li>
+            </ol>
+
+            <button type="button" data-bind="click: back" class="btn btn-secondary">返回</button>
+        </div>
+
+        <div data-bind="visible: step() == 'sync-from-server'">
+            <h2>从服务器同步</h2>
+
+            <p>请在下面输入图灵服务器地址和凭据。这将从服务器下载整个图灵文档，并将安装程序同步到该文档。根据文档大小和连接速度，这可能需要一段时间。</p>
+
+            <div class="form-group">
+                <label for="sync-server-host">图灵服务器地址</label>
+                <input type="text" id="syncServerHost" class="form-control" data-bind="value: syncServerHost" placeholder="https://<hostname>:<port>">
+            </div>
+            <div class="form-group">
+                <label for="sync-proxy">代理服务器（可选）</label>
+                <input type="text" id="sync-proxy" class="form-control" data-bind="value: syncProxy" placeholder="https://<hostname>:<port>">
+
+                <p><strong>注意:</strong> 如果将代理设置留空，则将使用系统代理（仅适用于桌面/电子版本）</p>
+            </div>
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" class="form-control" data-bind="value: username" placeholder="用户名">
+            </div>
+            <div class="form-group">
+                <label for="password1">密码</label>
+                <input type="password" id="password1" class="form-control" data-bind="value: password1" placeholder="密码">
+            </div>
+
+            <button type="button" data-bind="click: back" class="btn btn-secondary">返回</button>
+
+            &nbsp;
+
+            <button type="button" data-bind="click: finish" class="btn btn-primary">完成安装</button>
+        </div>
+
+        <div data-bind="visible: step() == 'sync-in-progress'">
+            <h2>正在同步</h2>
+
+            <div class="alert alert-success">已完成同步前的检查。初始同步需要一些时间才能完成。完成后，您将被重定向到登录页面。</div>
+
+            <div data-bind="if: instanceType == 'desktop'">
+                未完成的同步项：<strong id="outstanding-syncs">N/A</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    const glob = {
+        sourceId: ''
+    };
+    const syncInProgress = <%= syncInProgress ? 'true' : 'false' %>;
+</script>
+
+<!-- Required for correct loading of scripts in Electron -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+<script src="libraries/jquery.min.js"></script>
+<script src="libraries/jquery.hotkeys.js"></script>
+
+<link href="libraries/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="libraries/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="libraries/knockout.min.js"></script>
+
+<script src="app/setup.js" crossorigin type="module"></script>
+<link href="stylesheets/themes.css" rel="stylesheet">
+</body>
+</html>

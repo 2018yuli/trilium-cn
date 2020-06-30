@@ -1,0 +1,38 @@
+<div id="clone-to-dialog" class="modal mx-auto" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" style="max-width: 1000px" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mr-auto">将笔记克隆到 ...</h5>
+
+                <button type="button" class="help-button" title="Help on links" data-help-page="Cloning-notes">?</button>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0 !important;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="clone-to-form">
+                <div class="modal-body">
+                    <h5>被克隆的笔记</h5>
+
+                    <ul id="clone-to-note-list" style="max-height: 200px; overflow: auto;"></ul>
+
+                    <div class="form-group">
+                        <label for="clone-to-note-autocomplete">克隆到 ...</label>
+
+                        <div class="input-group">
+                            <input id="clone-to-note-autocomplete" class="form-control" placeholder="按名称搜索笔记">
+                        </div>
+                    </div>
+
+                    <div class="form-group" title="克隆的笔记将以给定的前缀显示在导航中">
+                        <label for="clone-prefix">前缀（可选）</label>
+                        <input id="clone-prefix" class="form-control" style="width: 100%;">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">克隆到所选笔记 <kbd>enter</kbd></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

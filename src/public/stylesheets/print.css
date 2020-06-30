@@ -1,0 +1,11 @@
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+
+    .relation-map-wrapper {
+        height: 100vh !important;
+    }
+}

@@ -1,0 +1,64 @@
+<div id="import-dialog" class="modal fade mx-auto" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">导入笔记</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="import-form">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="import-file-upload-input"><strong>选择导入文件</strong></label>
+
+                        <input type="file" id="import-file-upload-input" class="form-control-file" multiple />
+
+                        <p>文件内容将作为子笔记导入到<strong class="import-note-title"></strong>.
+                    </div>
+
+                    <div class="form-group">
+                        <strong>选项：</strong>
+
+                        <div class="checkbox">
+                            <label data-toggle="tooltip" title="图灵 <code>.zip</code>, <code>.tar</code> 导出文件可以包含可能包含有害行为的可执行脚本。安全导入将停用所有导入脚本的自动执行。 只有当导入的tar归档文件应该包含可执行脚本并且您完全信任导入文件的内容时，才可以取消选中&amp;quot；安全导入模式&amp;quot。">
+                                <input id="safe-import-checkbox" value="1" type="checkbox" checked>
+                                <span>安全导入模式</span>
+                            </label>
+                        </div>
+
+                        <div class="checkbox">
+                            <label data-toggle="tooltip" title="如果选中此选项，图灵将读取<code>.zip</code>，<code>.tar</code>，<code>.enex</code>和<code>.opml</code>文件，并为这些档案中的文件创建笔记。如果不选中，那么图灵会将整个档案本身附加到笔记上。">
+                                <input id="explode-archives-checkbox" value="1" type="checkbox" checked>
+                                <span>解析<code>.zip</code>，<code>.tar</code>，<code>.enex</code>和<code>.opml</code>档案的内容。</span>
+                            </label>
+                        </div>
+
+                        <div class="checkbox">
+                            <label data-toggle="tooltip" title="<p>如果选中此选项，图灵将尝试通过缩放和优化来缩小导入的图像，这可能会影响感知的图像质量。如果未选中，则导入图像时将不做任何更改。</p><p>这不适用于 <code>.zip</code>, <code>.tar</code> 等带元数据的导入，因为一般这些文件已经过了优化。</p>">
+                                <input id="shrink-images-checkbox" value="1" type="checkbox" checked> <span>缩小图像</span>
+                            </label>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input id="text-imported-as-text-checkbox" value="1" type="checkbox" checked>
+
+                                如果元数据不清楚，则将HTML、Markdown和TXT作为文本笔记导入
+                            </label>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input id="code-imported-as-code-checkbox" value="1" type="checkbox" checked> 如果从元数据看不清楚，则将识别的代码文件（例如<code>.json</code>）导入为代码笔记
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="import-button">导入</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

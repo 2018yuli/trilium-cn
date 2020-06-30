@@ -1,0 +1,811 @@
+html {
+    /* this fixes FF filter vs. position fixed bug: https://github.com/zadam/trilium/issues/233 */
+    height: 100%;
+}
+
+body {
+    /* Fix for CKEditor block gutter icon "stretching" body and causing scrollbar to appear after pressing enter
+       on the last line of the editor. */
+    position: fixed;
+    width: 100%;
+}
+
+button.btn, button.btn-sm {
+    font-size: inherit;
+}
+
+.input-group-text {
+    background-color: var(--accented-background-color) !important;
+    color: var(--muted-text-color) !important;
+}
+
+button.close {
+    color: var(--main-text-color);
+}
+
+button.close:hover {
+    color: var(--hover-item-text-color);
+}
+
+.modal-content {
+    background-color: var(--modal-background-color) !important;
+}
+
+.nav-link.active {
+    background-color: inherit !important;
+    color: var(--main-text-color) !important;
+}
+
+ul.fancytree-container {
+    /* override specific size from fancytree.css */
+    font-family: inherit !important;
+    font-size: inherit !important;
+}
+
+.fancytree-title {
+    margin-left: 7px !important;
+}
+
+.fancytree-node:not(.fancytree-loading) .fancytree-expander {
+    background: none;
+    width: 21px;
+    height: auto;
+    text-align: center;
+}
+
+.fancytree-node:not(.fancytree-loading) .fancytree-expander:before {
+    font-family: 'boxicons' !important;
+    speak: none;
+    font-size: x-large;
+    text-transform: none;
+    line-height: 1;
+    content: "\ea1d";
+    position: relative;
+    top: -2px;
+    margin-right: 5px;
+}
+
+/* this is done to preserve correct indentation. Better solution would be preferable */
+.fancytree-node:not(.fancytree-folder) .fancytree-expander:before {
+    color: var(--main-background-color); /* setting to background color makes this invisible */
+}
+
+.fancytree-node.fancytree-expanded .fancytree-expander:before {
+    font-family: 'boxicons' !important;
+    content: "\ea17";
+}
+
+/** some common text styling for cssClass label */
+span.fancytree-node.underline .fancytree-title { text-decoration: underline; }
+span.fancytree-node.dotted .fancytree-title { text-decoration: dotted; }
+span.fancytree-node.bold .fancytree-title { font-weight: bold; }
+span.fancytree-node.muted { opacity: 0.6; }
+
+.note-title[readonly] {
+    background: inherit;
+}
+
+.tdialog {
+    display: none;
+}
+
+.note-tab-content-template {
+    display: none !important;
+}
+
+.note-tab-content {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+/** we disable shield background when in zen mode because I couldn't get it to stay static
+    (it kept growing with content) */
+#root-widget:not(.zen-mode) .note-tab-content.protected {
+    /* DON'T COLLAPSE THE RULES INTO SINGLE ONE, BACKGROUND WON'T DISPLAY */
+    background: url('../images/shield.svg') no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.zen-mode #center-pane {
+    width: 100% !important;
+}
+
+.ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
+
+.icon-action:hover:not(.disabled) {
+    text-decoration: none;
+    border-color: var(--button-border-color);
+}
+
+.icon-action {
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+.icon-action.disabled {
+    color: var(--muted-text-color) !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.ui-widget-content a:not(.ui-tabs-anchor) {
+    color: #337ab7 !important;
+}
+
+div.ui-tooltip {
+    max-width: 600px;
+    max-height: 600px;
+    overflow: auto;
+}
+
+.alert {
+    padding: 5px;
+    width: auto;
+}
+
+/*
+* .search-inactive is added to search window <webview> when the window
+* is inactive.
+*/
+.search-inactive {
+    visibility: hidden;
+}
+
+/*
+* .search-inactive is added to search window <webview> when the window
+* is active.
+*/
+.search-active {
+    visibility: visible;
+}
+
+.electronSearchText-box {
+    display: none;
+}
+.electronSearchText-visible {
+    display: block;
+}
+
+/* Allow to use <kbd> elements inside the title to define shortcut hints. */
+.ui-menu kbd, button kbd {
+    color: var(--muted-text-color);
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.ui-menu kbd {
+    margin-left: 30px;
+    float: right;
+}
+
+#note-source {
+    height: 98%;
+    width: 100%;
+    overflow: scroll;
+}
+
+.suppressed {
+    display: none;
+}
+
+.dropdown-menu {
+    color: var(--menu-text-color) !important;
+    background-color: var(--menu-background-color) !important;
+}
+
+.dropdown-menu .disabled {
+    color: #888 !important;
+    pointer-events: none;
+}
+
+.dropdown-menu a:hover:not(.disabled), .dropdown-item:hover:not(.disabled) {
+    color: var(--hover-item-text-color) !important;
+    background-color: var(--hover-item-background-color) !important;
+    cursor: pointer;
+}
+
+.dropdown-menu a:not(.selected) .check {
+    visibility: hidden;
+}
+
+.dropdown-menu kbd
+{
+    color: var(--muted-text-color);
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.dropdown-menu kbd {
+    float: right;
+}
+
+.dropdown-item {
+    color: var(--menu-text-color) !important;
+}
+
+.dropdown-item.disabled, .dropdown-item.disabled kbd {
+    color: #aaa !important;
+}
+
+.dropdown-item.active {
+    color: var(--active-item-text-color) !important;
+    background-color: var(--active-item-background-color) !important;
+}
+
+.CodeMirror {
+    font-family: "Liberation Mono", "Lucida Console", monospace;
+    height: auto;
+    background: inherit;
+}
+
+.CodeMirror-scroll {
+    min-height: 500px;
+}
+
+.CodeMirror-gutters {
+    background-color: inherit !important;
+    border-right: none;
+}
+
+.cm-matchhighlight {
+    background-color: #eeeeee
+}
+
+#sql-console-query {
+    height: 150px;
+    width: 100%;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+#sql-console-query .CodeMirror {
+    height: 150px;
+}
+
+#sql-console-query .CodeMirror-scroll {
+    min-height: inherit !important;
+}
+
+.btn {
+    border-radius: var(--button-border-radius);
+}
+
+.btn.btn-primary {
+    border-color: var(--primary-button-border-color);
+    background-color: var(--primary-button-background-color);
+    color: var(--primary-button-text-color);
+}
+
+.btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active {
+    border-color: var(--primary-button-text-color);
+    background-color: var(--active-item-background-color);
+    color: var(--active-item-text-color);
+}
+
+.btn.btn-primary kbd {
+    color: var(--primary-button-text-color);
+}
+
+.btn:not(.btn-primary) {
+    border-color: var(--button-border-color);
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+}
+
+.btn.active:not(.btn-primary) {
+    background-color: var(--button-disabled-background-color) !important;
+    opacity: 0.4;
+}
+
+button.icon-button {
+    font-size: 1.5em;
+    padding: 2px;
+    max-height: 34px;
+}
+
+.ck.ck-block-toolbar-button {
+    transform: translateX(7px);
+    color: var(--muted-text-color);
+    background-color: var(--main-background-color);
+    /* Making this narrower because https://github.com/zadam/trilium/issues/502 (problem only in smaller font sizes) */
+    min-width: 0;
+    padding: 0;
+}
+
+pre:not(.CodeMirror-line) {
+    color: var(--main-text-color) !important;
+    white-space: pre-wrap;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.show-recent-notes-button, .input-clearer-button, .go-to-selected-note-button {
+    padding-top: 8px;
+}
+
+.show-recent-notes-button {
+    cursor: pointer;
+    font-size: 1.3em;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.input-clearer-button {
+    cursor: pointer;
+    font-size: 1.3em;
+    background: inherit !important;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.open-external-link-button {
+    cursor: pointer;
+    font-size: 1.3em;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.go-to-selected-note-button {
+    cursor: pointer;
+    font-size: 1.3em;
+    padding-left: 4px;
+    padding-right: 3px;
+}
+
+.go-to-selected-note-button.disabled, .go-to-selected-note-button.disabled:hover {
+    cursor: inherit;
+    color: var(--button-disabled-background-color) !important;
+}
+
+.note-autocomplete-input {
+    /* this is for seamless integration of "input clearer" button */
+    border-right: 0;
+}
+
+table.promoted-attributes-in-tooltip {
+    margin: auto;
+}
+
+table.promoted-attributes-in-tooltip td, table.promoted-attributes-in-tooltip th {
+    padding: 10px;
+}
+
+.tooltip {
+    font-size: var(--main-font-size) !important;
+}
+
+.tooltip-inner {
+    background-color: var(--tooltip-background-color) !important;
+    max-width: 500px;
+    /* height needs to stay small because tooltip has problem when it can't fit to either top or bottom of the cursor */
+    max-height: 300px;
+    overflow: hidden;
+    border: 1px solid var(--main-border-color);
+    border-radius: 5px;
+    text-align: left;
+    color: var(--main-text-color) !important;
+}
+
+.tooltip-inner img {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.tooltip-inner figure.image-style-side {
+    float: right;
+}
+
+.tooltip.show {
+    opacity: 1;
+}
+
+.algolia-autocomplete {
+    width: calc(100% - 30px);
+    z-index: 2000 !important;
+}
+
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+    width: 100%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu {
+    width: 100%;
+    background-color: var(--main-background-color);
+    border: 1px solid var(--main-border-color);
+    border-top: none;
+    z-index: 2000 !important;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+    cursor: pointer;
+    padding: 5px;
+    margin: 0;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion p {
+    padding: 0;
+    margin: 0;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+    color: var(--hover-item-text-color);
+    background-color: var(--hover-item-background-color);
+}
+
+.help-button {
+    float: right;
+    background: none;
+    font-weight: 900;
+    color: orange;
+    border: 0;
+    cursor: pointer;
+}
+
+.multiplicity {
+    font-size: 1.3em;
+}
+
+/* this is because bootstrap (?) sets code color to red for some reason */
+code {
+    color: inherit !important;
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.fadeInDown {
+    animation-name: fadeInDown;
+}
+
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+}
+
+.fadeOutUp {
+    animation-name: fadeOutUp;
+}
+
+div[data-notify="container"] {
+    text-align: center;
+}
+
+.saved-indicator {
+    font-size: 150%;
+}
+
+#export-form .form-check {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#export-form .format-choice {
+    padding-left: 40px;
+    display: none;
+}
+
+#export-form #opml-versions {
+    padding-left: 60px;
+    display: none;
+}
+
+#export-form .form-check-label {
+    padding: 2px;
+}
+
+.unhoist-button {
+    text-decoration: underline !important;
+    color: var(--link-color) !important;
+    cursor: pointer !important;
+}
+
+.ck-editor__is-empty.ck-content.ck-editor__editable::before {
+    content: 'You can start writing note here ...';
+    position: absolute;
+    display: block;
+
+    margin: var(--ck-spacing-large) 0;
+
+    color: var(--muted-text-color);
+}
+
+.ck-content .table table th {
+    background-color: var(--accented-background-color);
+}
+
+.fancytree-loading span.fancytree-expander {
+    background-image: none !important;
+    display: inline-block;
+}
+
+.fancytree-loading span.fancytree-expander:after {
+    content: " ";
+    color: inherit !important;
+    display: block;
+    border-radius: 50%;
+    border-color: #000 transparent #000 transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ck-content .image > figcaption {
+    color: var(--main-text-color) !important;
+    background-color: var(--accented-background-color) !important;
+}
+
+#options-dialog input[type=number] {
+    text-align: right;
+}
+
+.help-cards ul {
+    padding-left: 20px;
+}
+
+.help-cards kbd {
+    color: var(--main-text-color);
+    background-color: var(--accented-background-color);
+    border: 1px solid var(--main-border-color);
+    padding: 2px;
+}
+
+#sql-console-table-schemas button {
+    padding: 0.25rem 0.4rem;
+    font-size: 0.875rem;
+    line-height: 0.5;
+    border-radius: 0.2rem;
+}
+
+a.external:not(.no-arrow):after, a[href^="http://"]:not(.no-arrow):after, a[href^="https://"]:not(.no-arrow):after {
+    font-size: smaller;
+    content: "\2197";
+    vertical-align: top;
+}
+
+.card {
+    background-color: inherit !important;
+    border-color: var(--main-border-color) !important;
+}
+
+.bx-empty {
+    width: 1em;
+    display: inline-block;
+}
+
+
+
+.note-detail-empty {
+    margin: 50px;
+}
+
+.modal-header {
+    padding: 0.7rem 1rem !important; /* make modal header padding slightly smaller */
+}
+
+.floating-button {
+    position: absolute !important;
+    z-index: 100;
+}
+
+#toast-container {
+    position: absolute;
+    width: 100%;
+    top: 20px;
+    pointer-events: none;
+}
+
+.toast {
+    background-color: var(--accented-background-color) !important;
+    color: var(--main-text-color) !important;
+    z-index: 9999999999 !important;
+    pointer-events: all;
+}
+
+.toast-header {
+    background-color: var(--more-accented-background-color) !important;
+    color: var(--main-text-color) !important;
+}
+
+.mentions-item {
+    font-size: var(--main-font-size) !important;
+}
+
+.mentions-item.ck-on {
+    background-color: var(--active-item-background-color) !important;
+    color: var(--active-item-text-color) !important;
+}
+
+.mentions-item b {
+    font-weight: bold !important;
+    color: inherit !important;
+    vertical-align: baseline !important;
+}
+
+.ck-content .todo-list .todo-list__label > input:before {
+    border: 1px solid var(--muted-text-color) !important;
+}
+
+.ck-link-actions .ck-tooltip {
+    /* force hide the tooltip since it shows misleading "open link in new tab */
+    display: none !important;
+}
+
+.include-note {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--accented-background-color);
+}
+
+.include-note.ck-placeholder::before { /* remove placeholder in otherwise empty note */
+    content: '' !important;
+}
+
+.include-note.box-size-small .include-note-content {
+    max-height: 10em;
+    overflow: auto;
+}
+
+.include-note.box-size-medium .include-note-content {
+    max-height: 20em;
+    overflow: auto;
+}
+
+.alert-warning {
+    color: var(--main-text-color) !important;
+    background-color: var(--accented-background-color) !important;
+    border-color: var(--main-border-color) !important;
+}
+
+body {
+    font-size: var(--main-font-size);
+}
+
+.hidden-by-zen-mode {
+    display: none !important;
+}
+
+.gutter {
+    background: linear-gradient(to bottom, transparent, var(--accented-background-color), transparent);
+}
+
+.gutter:hover {
+    background: linear-gradient(to bottom, transparent, var(--main-border-color), transparent);
+}
+
+.gutter.gutter-horizontal {
+    cursor: col-resize;
+}
+
+.gutter.gutter-vertical {
+    cursor: row-resize;
+}
+
+.dropdown-menu {
+    font-size: inherit;
+}
+
+#context-menu-container {
+    max-height: 100vh;
+    /* !!! Cannot set overflow: auto, submenus will break !!! */
+}
+
+#context-menu-container, #context-menu-container .dropdown-menu {
+    padding: 3px 0 0;
+    z-index: 1111;
+}
+
+#context-menu-container .dropdown-item {
+    padding: 0 7px 0 10px;
+    cursor: pointer;
+}
+
+li.dropdown-submenu:hover > ul.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu {
+    position:relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    min-width: 15rem;
+}
+
+/* rotate caret on hover */
+.dropdown-menu > li > a:hover:after {
+    text-decoration: underline;
+    transform: rotate(-90deg);
+}
+
+.fancytree-loading span.fancytree-expander {
+    width: 16px;
+    height: 16px;
+    margin-left: 2px;
+}
+
+.fancytree-loading span.fancytree-expander:after {
+    width: 12px;
+    height: 12px;
+    margin-top: 4px;
+    margin-left: 1px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+body {
+    /* FF basic styling */
+    scrollbar-color: var(--active-item-background-color) var(--main-background-color);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    border: 1px solid var(--scrollbar-border-color);
+}
+
+::-webkit-scrollbar-corner {
+    background-color: inherit;
+}
+
+[data-toggle="tooltip"] span {
+    padding-bottom: 0;
+    border-bottom: 1px dotted;
+}
+
+.hidden-int, .hidden-ext {
+    display: none !important;
+}

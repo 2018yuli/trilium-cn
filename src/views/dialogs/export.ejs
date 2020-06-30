@@ -1,0 +1,79 @@
+<div id="export-dialog" class="modal fade mx-auto" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">导出笔记 "<span class="export-note-title"></span>"</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="export-form">
+                <div class="modal-body">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="export-type" id="export-type-subtree" value="subtree">
+                        <label class="form-check-label" for="export-type-subtree">本笔记及文件夹下所有子笔记</label>
+                    </div>
+
+                    <div id="export-subtree-formats" class="format-choice">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="export-subtree-format" id="export-subtree-format-html"
+                                   value="html">
+                            <label class="form-check-label" for="export-subtree-format-html">HTML实用ZIP压缩-推荐，因为这样可以保留所有格式。</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="export-subtree-format" id="export-subtree-format-markdown"
+                                   value="markdown">
+                            <label class="form-check-label" for="export-subtree-format-markdown">
+                                Markdown 格式-这将保留大部分格式。
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="export-subtree-format" id="export-subtree-format-opml"
+                                   value="opml">
+                            <label class="form-check-label" for="export-subtree-format-opml">
+                                OPML - 仅用于文本的大纲视图交换格式。不包括格式、图像和文件。
+                            </label>
+                        </div>
+
+                        <div id="opml-versions">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="opml-version" id="opml-v1" value="1.0">
+                                <label class="form-check-label" for="opml-v1">OPML v1.0-仅限纯文本</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="opml-version" id="opml-v2" value="2.0">
+                                <label class="form-check-label" for="opml-v2">OMPLv2.0 - 允许HTML</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="export-type" id="export-type-single" value="single">
+                        <label class="form-check-label" for="export-type-single">不包括文件夹下的子笔记</label>
+                    </div>
+
+                    <div id="export-single-formats" class="format-choice">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="export-single-format" id="export-single-format-html" value="html">
+                            <label class="form-check-label" for="export-single-format-html">HTML- 推荐，因为可以保留所有格式。</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="export-single-format" id="export-single-format-markdown"
+                                   value="markdown">
+                            <label class="form-check-label" for="export-single-format-markdown">
+                                Markdown 格式-这将保留大部分格式。
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="export-button">导出</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

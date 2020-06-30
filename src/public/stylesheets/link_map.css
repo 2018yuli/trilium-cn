@@ -1,0 +1,50 @@
+.link-map-container {
+    position: relative;
+    outline: none; /* remove dotted outline on click */
+}
+
+.link-map-container .note-box {
+    padding: 8px;
+    position: absolute !important;
+    background-color: var(--main-background-color);
+    color: var(--main-text-color);
+    z-index: 4;
+    border: 1px solid #666;
+    box-shadow: 2px 2px 19px #999;
+    border-radius: 8px;
+    opacity: 0.8;
+    font-size: 11px;
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    min-width: 120px;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.link-map-container .note-box:hover {
+    background-color: var(--more-accented-background-color);
+}
+
+.link-map-container .note-box .title {
+    font-size: larger;
+    font-weight: 600;
+}
+
+.link-map-active-note {
+    background-color: var(--accented-background-color) !important;
+}
+
+.link-map-container .jsplumb-connection-hover path {
+    stroke-width: 2 !important;
+    stroke: var(--main-text-color);
+}
+
+.link-map-widget {
+    outline: none;
+    overflow: hidden;
+}
+
+.link-map-widget .note-box .title {
+    font-size: 19px !important;
+}

@@ -1,0 +1,37 @@
+<div id="note-revisions-dialog" class="modal fade mx-auto" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mr-auto">笔记修订记录</h5>
+
+                <button class="btn btn-xs"
+                        id="note-revisions-erase-all-revisions-button"
+                        title="删除本笔记的所有修订记录"
+                        style="padding: 0 10px 0 10px;" type="button">删除所有修订记录</button>
+
+                <button class="help-button" type="button" data-help-page="Note-revisions" title="Help on Note revisions">?</button>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0 !important;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="display: flex; height: 80vh;">
+                <div class="dropdown">
+                    <button id="note-revision-list-dropdown" type="button" style="display: none;" data-toggle="dropdown">下拉触发</button>
+
+                    <div id="note-revision-list" style="position: static; height: 100%; overflow: auto;" class="dropdown-menu"></div>
+                </div>
+
+                <div id="note-revision-content-wrapper" style="flex-grow: 1; margin-left: 20px; display: flex; flex-direction: column;">
+                    <div style="flex-grow: 0; display: flex; justify-content: space-between;">
+                        <h3 id="note-revision-title" style="margin: 3px; flex-grow: 100;"></h3>
+
+                        <div id="note-revision-title-buttons"></div>
+                    </div>
+
+                    <div id="note-revision-content" style="overflow: auto; word-break: break-word;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
