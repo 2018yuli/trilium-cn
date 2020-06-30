@@ -44,7 +44,7 @@
     </style>
 </head>
 <body>
-<noscript>图灵笔记需要启用JavaScript。</noscript>
+<noscript>图聆笔记需要启用JavaScript。</noscript>
 <div class="container">
     <div id="setup-dialog" class="col-md-12 col-lg-8 col-xl-6 mx-auto" style="padding-top: 25px; font-size: larger; display: none;">
         <h1>Trilium Notes setup</h1>
@@ -55,7 +55,7 @@
         <div id="setup-type" data-bind="visible: step() == 'setup-type'" style="margin-top: 20px;">
             <div class="radio" style="margin-bottom: 15px;">
                 <label><input type="radio" name="setup-type" value="new-document" data-bind="checked: setupType">
-                    我是一个新用户，我想为我的笔记创建新的图灵文档</label>
+                    我是一个新用户，我想为我的笔记创建新的图聆文档</label>
             </div>
             <div class="radio" style="margin-bottom: 15px;">
                 <label><input type="radio" name="setup-type" value="sync-from-desktop" data-bind="checked: setupType">
@@ -138,7 +138,7 @@
             <p>此安装程序需要从桌面实例启动：</p>
 
             <ol>
-                <li>请打开图灵笔记的桌面实例</li>
+                <li>请打开图聆笔记的桌面实例</li>
                 <li>点击右上角的选项按钮</li>
                 <li>单击“同步”选项卡</li>
                 <li>将服务器实例地址配置为：<span id="current-host"></span> 然后单击“保存”。</li>
@@ -152,10 +152,10 @@
         <div data-bind="visible: step() == 'sync-from-server'">
             <h2>从服务器同步</h2>
 
-            <p>请在下面输入图灵服务器地址和凭据。这将从服务器下载整个图灵文档，并将安装程序同步到该文档。根据文档大小和连接速度，这可能需要一段时间。</p>
+            <p>请在下面输入图聆服务器地址和凭据。这将从服务器下载整个图聆文档，并将安装程序同步到该文档。根据文档大小和连接速度，这可能需要一段时间。</p>
 
             <div class="form-group">
-                <label for="sync-server-host">图灵服务器地址</label>
+                <label for="sync-server-host">图聆服务器地址</label>
                 <input type="text" id="syncServerHost" class="form-control" data-bind="value: syncServerHost" placeholder="https://<hostname>:<port>">
             </div>
             <div class="form-group">

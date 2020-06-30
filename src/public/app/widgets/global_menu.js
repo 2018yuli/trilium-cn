@@ -89,7 +89,7 @@ const TPL = `
 
             <a class="dropdown-item show-about-dialog-button">
                 <span class="bx bx-empty"></span>
-                关于图灵笔记
+                关于图聆笔记
             </a>
 
             <a class="dropdown-item logout-button" data-trigger-command="logout">

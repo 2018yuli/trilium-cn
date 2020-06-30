@@ -116,7 +116,7 @@ export default class TabManager extends Component {
             // using pushState instead of directly modifying document.location because it does not trigger hashchange
             window.history.pushState(null, "", url);
 
-            document.title = "图灵笔记";
+            document.title = "图聆笔记";
 
             if (activeTabContext.note) {
                 // it helps navigating in history if note title is included in the title

@@ -26,7 +26,7 @@ const TPL = `
 
 <h4>备份数据库</h4>
 
-<p>图灵有自动备份（每日、每周、每月）功能，但您也可以在这里手动触发备份。</p>
+<p>图聆有自动备份（每日、每周、每月）功能，但您也可以在这里手动触发备份。</p>
 
 <button id="backup-database-button" class="btn">立即备份数据库</button><br/><br/>
 

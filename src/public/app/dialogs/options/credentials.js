@@ -63,7 +63,7 @@ export default class ChangePasswordOptions {
             'new_password': newPassword1
         }).then(result => {
             if (result.success) {
-                alert("密码已更改。图灵将在您确认修改后重新加载。");
+                alert("密码已更改。图聆将在您确认修改后重新加载。");
 
                 // password changed so current protected session is invalid and needs to be cleared
                 protectedSessionHolder.resetProtectedSession();

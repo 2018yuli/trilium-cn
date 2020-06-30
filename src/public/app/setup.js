@@ -93,7 +93,7 @@ function SetupModel() {
             const password = this.password1();
 
             if (!syncServerHost) {
-                showAlert("图灵服务器地址不能为空");
+                showAlert("图聆服务器地址不能为空");
                 return;
             }
 
