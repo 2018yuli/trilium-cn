@@ -23,7 +23,7 @@
 , "packager": "electron-packager . --asar --out=dist --executable-name=trilium --platform=win32  --arch=x64 --overwrite --icon=images/app-icons/win/icon.ico"  },
   "dependencies": {
     "async-mutex": "0.2.2",
-    "axios": "0.19.2",
+    "axios": "1.6.0",
     "body-parser": "1.19.0",
     "cls-hooked": "4.2.2",
     "commonmark": "0.29.1",
